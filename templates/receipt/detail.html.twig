@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container-fluid col-md-6 text-center mt-3">
+   <table class="table table-info">
+      <tr>
+         <th colspan=2 class="text text-bg-warning">Receipt Detail</th>
+      </tr>
+      <tr>
+         <th>Pet name</th>
+         <td>{{ receipt.petname }} </td>
+      </tr>
+        <tr>
+         <th>Buyer Name</th>
+         <td>{{ receipt.buyername }} </td>
+      </tr>
+        <tr>
+         <th>Price</th>
+         <td>{{ receipt.price }} $ </td>
+      </tr>
+      <tr>
+         <th>Date Create</th>
+         <td>{{ receipt.datecreate | date('d/m/Y') }}  </td>
+      </tr>
+      
+      
+   </table>
+</div>
+{% endblock %}

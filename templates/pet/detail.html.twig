@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container-fluid col-md-6 text-center mt-3">
+   <div class="col">
+            <img src="{{ pet.petimage }}" width="300" height="200" />
+         </div>
+   <table class="table table-info">
+      <tr>
+         <th colspan=2 class="text text-bg-warning">Pet Detail</th>
+      </tr>
+      <tr>
+         <th>Pet name</th>
+         <td>{{ pet.petname }} </td>
+      </tr>
+        <tr>
+         <th>Pet Gender</th>
+         <td>{{ pet.petgender }} </td>
+      </tr>
+        <tr>
+         <th>Pet Type</th>
+         <td>{{ pet.pettype }} </td>
+      </tr>
+      
+      
+   </table>
+</div>
+{% endblock %}

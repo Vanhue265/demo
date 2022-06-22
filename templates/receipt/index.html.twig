@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container col-md-6 text-center mt-3">
+    <h1 class="text text-success">Receipt List</h1>
+    
+    <table class="table table-primary mt-3">
+        <thead>
+          <tr>
+            <th>Receipt Id</th>
+            <th>Pet Name</th>
+            <th>Buyer Name</th>
+            <th>Price</th>
+            <th>Date Create</th>
+          </tr>
+        </thead>
+        <tbody>
+         {% for receipt in receipts %}
+             <tr>
+                 <td>{{ receipt.id }}</td>
+                 <td>{{ receipt.petname }}</td>
+                 <td>{{ receipt.buyername }}</td>
+                 <td>{{ receipt.price }} $ </td>
+                 <td>{{ receipt.datecreate | date('d/m/Y') }}  </td>
+             </tr>
+         {% endfor %}
+        </tbody>
+    <table>
+    
+</div>
+{% endblock %}
