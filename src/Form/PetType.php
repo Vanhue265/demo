@@ -43,7 +43,8 @@ class PetType extends AbstractType
             [
                 'label' => 'Pet image',
                 'data_class' => null,
-                'required' => is_null($builder->getData()->getPetimage())                       
+                'required' => false,   
+                'empty_data' => ''                    
             ])
             ->add('buyer', EntityType::class,
             [

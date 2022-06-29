@@ -20,5 +20,15 @@ class ReceiptController extends AbstractController
         ]
         );
     }
-    
+    #[Route('/receiptdetail/{id}', name: 'view_receipt_by_id')]
+    public function PetDetail(ReceiptRepository $receiptRepository, $id)
+    {
+        $receipt = $receiptRepository->find($id);
+        return $this->render(
+            "receipt/detail.html.twig",
+        [
+            'receipt' => $receipt
+        ]
+        );
+    }
 }

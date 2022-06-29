@@ -3,24 +3,30 @@
 {% block body %}
 <div class="container col-md-6 text-center mt-3">
     <h1 class="text text-success">Receipt List</h1>
+    {# <a class="btn btn-primary" href="{{ path('add_receipt')}}">Add</a>
+    <form class="form-group" action="{{ path('search_receipt') }}" method="post">
+        <input class="form-control" type="search" name="keyword" required
+        placeholder="Search">
+    </form> #}
     
     <table class="table table-primary mt-3">
         <thead>
           <tr>
             <th>Receipt Id</th>
-            <th>Pet Name</th>
-            <th>Buyer Name</th>
-            <th>Price</th>
+            
             <th>Date Create</th>
+            <th><th>
           </tr>
         </thead>
         <tbody>
          {% for receipt in receipts %}
              <tr>
-                 <td>{{ receipt.id }}</td>
-                 <td>{{ receipt.petname }}</td>
-                 <td>{{ receipt.buyername }}</td>
-                 <td>{{ receipt.price }} $ </td>
+                 <td>
+                    <a href="{{ path('view_receipt_by_id', {'id': receipt.id })}}">
+                        {{ receipt.id }}                      
+                    </a>
+                 </td>
+                 
                  <td>{{ receipt.datecreate | date('d/m/Y') }}  </td>
              </tr>
          {% endfor %}

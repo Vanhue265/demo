@@ -8,7 +8,9 @@
       </tr>
       <tr>
          <th>Pet name</th>
-         <td>{{ receipt.petname }} </td>
+         <td>
+               {{ receipt.pet.petname }}
+         </td>
       </tr>
         <tr>
          <th>Buyer Name</th>
@@ -22,6 +24,7 @@
          <th>Date Create</th>
          <td>{{ receipt.datecreate | date('d/m/Y') }}  </td>
       </tr>
+      
       
       
    </table>
