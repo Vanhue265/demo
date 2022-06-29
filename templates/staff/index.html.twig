@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container col-md-6 text-center mt-3">
+		<h1 class="text text-success">Staff List</h1>
+		<a class="btn btn-primary" href="{{ path('add_staff')}}">Add</a>
+		<form class="form-group" action="{{ path('search_staff_name') }}" method="post">
+			<input class="form-control" type="search" name="keyword" required placeholder="Search by staff name">
+		</form>
+
+
+		<table class="table table-primary mt-3">
+			<thead>
+				<tr>
+					<th>Staff Id</th>
+					<th>Staff Name</th>
+					<th>Staff Phone</th>
+					<th>Staff Address</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for staff in staffs %}
+					<tr>
+						<td>{{ staff.id }}</td>
+						<td>{{staff.staffname}}</td>
+						<td>{{staff.staffphone}}</td>
+						<td>{{staff.staffaddress}}</td>
+						<td>
+                <a class="btn btn-warning" href="{{ path('staff_edit', {'id' : staff.id })}}">
+                    EDIT
+                </a>
+                <a class="btn btn-danger" href="{{ path('staff_delete', {'id' : staff.id })}}"
+                onclick="return confirm('Are you sure to delete this Product ?')";
+                >
+                    DELETE
+                </a>
+            </td>
+					</tr>
+				{% endfor %}
+			</tbody>
+			</table>
+			</div>
+		{% endblock %}
+

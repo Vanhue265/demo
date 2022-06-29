@@ -75,4 +75,18 @@ class StaffRepository extends ServiceEntityRepository
         ;
     }
     */
+     /**
+    * @return Staff[]
+    */
+    public function searchByName($staffname)
+    {
+        return $this->createQueryBuilder('staff')
+            ->andWhere('staff.staffname LIKE :name')
+            ->setParameter('name', '%'. $staffname . '%')
+            ->orderBy('pet.id', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

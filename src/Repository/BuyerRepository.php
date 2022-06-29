@@ -75,4 +75,18 @@ class BuyerRepository extends ServiceEntityRepository
         ;
     }
     */
+    /**
+    * @return Buyer[]
+    */
+    public function searchByName($buyername)
+    {
+        return $this->createQueryBuilder('buyer')
+            ->andWhere('buyer.buyername LIKE :name')
+            ->setParameter('name', '%'. $buyername . '%')
+            ->orderBy('buyer.id', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

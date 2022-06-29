@@ -1,0 +1,10 @@
+{% form_theme staffForm "bootstrap_4_layout.html.twig" %}
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container col-md-7 text-center mt-3">
+<h1 class="text text-bg-success">Edit Staff</h1>
+{{ form_start (staffForm) }}
+{{ form_end (staffForm) }}
+</div>
+{% endblock %}

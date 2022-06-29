@@ -15,6 +15,11 @@
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
+    <style>
+        li{
+            list-style-type: none;
+        }
+    </style>
     <body>
     
     {% block navigation %}
@@ -30,17 +35,24 @@
                     <li class="nav-item active">
                         <h2><a class="nav-link" href="{{ path('view_receipt_list') }}">Receipt</a></h2>
                     </li>
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;              
+                     <li class="nav-item active">
+                        <h2><a class="nav-link" href="{{ path('view_staff_list') }}">Staff</a></h2>
+                    </li>  
+                     <li class="nav-item active">
+                        <h2><a class="nav-link" href="{{ path('view_buyer_list') }}">Buyer</a></h2>
+                    </li>           
                     <li class="nav-item active">
                         <h2><a class="nav-link" href="{{ path('app_login') }}">Log in</a></h2>
                     </li>
+                     
                     
                 </ul>
             </nav>
+            <li class="nav-item active">
+                        <h2><a class="nav-link" href="{{ path('app_cart') }}">
+                            <img align="right" src="https://media.istockphoto.com/vectors/shopping-cart-black-icon-on-white-background-vector-illustration-for-vector-id1079804618?b=1&k=20&m=1079804618&s=612x612&w=0&h=0Z77kO1ZKvNnYjQNXZXzkS1ciwxAd2LCAwtjr3JEgO4=" width="4%" height="4%" alt="">
+                        </a></h2>
+                    </li>
     {% endblock %}
         {% block body %}{% endblock %}
     </body>
