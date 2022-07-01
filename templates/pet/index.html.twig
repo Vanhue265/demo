@@ -8,7 +8,13 @@
         <input class="form-control" type="search" name="keyword" required
         placeholder="Search by pet name">
     </form>
-    
+     <div class="form-group mt-3 col-md-6">
+    <select onchange="window.location.href=this.value" class="form-control">
+        <option>Sort by</option>
+        <option value="{{ path('sort_pet_name_ascending')}}">Name Ascending</option>
+        <option value="{{ path('sort_pet_name_descending')}}">Name Descending</option>
+    </select>
+    </div>
     
     <table class="table table-primary mt-3">
         <thead>

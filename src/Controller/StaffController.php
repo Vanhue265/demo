@@ -24,7 +24,7 @@ class StaffController extends AbstractController
     }
     #[Route('/delete/{id}', name: 'delete_staff')]
     public function StaffDelete($id, ManagerRegistry $managerRegistry) {
-        $staff = $managerRegistry->find($id);
+        $staff = $managerRegistry->getRepository(Staff::class)->find($id);
         if ($staff == null) {
             $this->addFlash("Error","Staff not found !");        
         } 
@@ -71,7 +71,7 @@ class StaffController extends AbstractController
                 $this->addFlash("Success","Edit staff succeed !");
                 return $this->redirectToRoute("view_staff_list");
             }
-            return $this->renderForm("staff/edit.html.twig",
+            return $this->render("staff/edit.html.twig",
             [
                 'staffForm' => $form->createView()
             ]);
@@ -85,7 +85,7 @@ class StaffController extends AbstractController
         return $this->render(
             "staff/index.html.twig",
             [
-                'staffs' => $staffs
+                'staffs' => $staff,
             ]);
     }
 

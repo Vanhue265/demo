@@ -89,4 +89,28 @@ class PetRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+     /**
+     * @return Pet[]
+     */
+    public function sortByNameAscending()
+    {
+        return $this->createQueryBuilder('pet')
+            ->orderBy('pet.petname', "ASC")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Pet[]
+     */
+    public function sortByNameDescending()
+    {
+        return $this->createQueryBuilder('pet')
+            ->orderBy('pet.petname', "DESC")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 }

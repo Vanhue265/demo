@@ -23,6 +23,25 @@ class PetController extends AbstractController
         ]
         );
     }
+    #[Route('/sortbyname/asc', name: 'sort_pet_name_ascending')]
+    public function PetSortAscending(PetRepository $petRepository) {
+        $pets = $petRepository->sortByNameAscending();
+        return $this->render(
+            "pet/index.html.twig",
+            [
+                'pets' => $pets
+            ]);
+    }
+
+    #[Route('/sortbyname/desc', name: 'sort_pet_name_descending')]
+    public function PetSortDescending(PetRepository $petRepository) {
+        $pets = $petRepository->sortByNameDescending();
+        return $this->render(
+            "pet/index.html.twig",
+            [
+                'pets' => $pets
+            ]);
+    }
 
     #[Route('/detail/{id}', name: 'view_pet_by_id')]
     public function PetDetail(PetRepository $petRepository, $id)

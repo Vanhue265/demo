@@ -2,22 +2,22 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Buyer;
+use App\Entity\Staff;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
-class BuyerFixtures extends Fixture
+class StaffFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
         // $product = new Product();
         // $manager->persist($product);
         for ($i=1; $i<=5; $i++) {
-            $buyer = new Buyer;
-            $buyer->setBuyername("Buyername $i");
-            $buyer->setBuyerphone("Buyerphone $i");
-            $buyer->setBuyeraddress("Buyeraddress $i");   
-            $manager->persist($buyer);
+            $staff = new Staff;
+            $staff->setStaffname("Staffname $i");
+            $staff->setStaffphone("Staffphone $i");
+            $staff->setStaffaddress("Staffaddress $i");   
+            $manager->persist($staff);
         }
 
         $manager->flush();

@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\Persistence\ManagerRegistry;
 
 #[Route('/buyer')]
 class BuyerController extends AbstractController
@@ -55,8 +56,8 @@ class BuyerController extends AbstractController
     }
 
     #[Route('/edit/{id}', name: 'edit_buyer')]
-    public function BuyerEdit(Request $request, BuyerRepository $buyerRepository, $id) {
-        $buyer = $buyerRepository->find($id);
+    public function BuyerEdit(Request $request, ManagerRegistry $managerRegistry, $id) {
+        $buyer = $managerRegistry->getRepository(Buyer::class)->find($id);
         if ($buyer == null) {
             $this->addFlash("Error","Buyer not found !");
             return $this->redirectToRoute("view_buyer_list");        
@@ -70,9 +71,9 @@ class BuyerController extends AbstractController
                 $this->addFlash("Success","Edit buyer succeed !");
                 return $this->redirectToRoute("view_buyer_list");
             }
-            return $this->renderForm("buyer/edit.html.twig",
+            return $this->render("buyer/edit.html.twig",
             [
-                'buyerForm' => $form
+                'buyerForm' => $form->createView()
             ]);
         }   
     }
@@ -84,7 +85,7 @@ class BuyerController extends AbstractController
         return $this->render(
             "buyer/index.html.twig",
             [
-                'buyers' => $buyers
+                'buyers' => $buyer
             ]);
     }
 
