@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container-fluid col-md-6 text-center mt-3">
+   
+   <table class="table table-info">
+      <tr>
+         <th colspan=2 class="text text-bg-warning">Buyer Detail</th>
+      </tr>
+     
+        <tr>
+         <th>Name</th>
+         <td>{{ buyer.buyername }} </td>
+      </tr>
+      <tr>
+         <th>Phone</th>
+         <td>{{ buyer.buyerphone }} </td>
+      </tr>
+        <tr>
+         <th>Address</th>
+         <td>{{ buyer.buyeraddress }} </td>
+      </tr>
+      <tr>
+         <th>Name of Pet</th>
+         
+         <td>
+            {% if buyer.pets != null %}
+               {% for pet in buyer.pets %}
+                  <a href="{{ path('view_pet_by_id', {'id' : pet.id })}}">
+                     {{ pet.petname }}
+                     <br>
+                  </a>     
+               {% endfor %}  
+            {% endif %}
+         </td>
+          
+      </tr>
+      <tr>
+         <th>Receipt Id</th>
+         <td> 
+            {% if buyer.receipts != null %}
+               {% for receipt in buyer.receipts %}
+                  <a href="{{ path('view_receipt_by_id', {'id' : receipt.id })}}">
+                     {{ receipt.id }}
+                     <br>
+                  </a>     
+               {% endfor %}  
+            {% endif %}
+         </td>
+      </tr>
+      
+      
+   </table>
+</div>
+{% endblock %}

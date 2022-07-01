@@ -7,14 +7,25 @@
          <th colspan=2 class="text text-bg-warning">Receipt Detail</th>
       </tr>
       <tr>
-         <th>Pet name</th>
+         <th>Name of Pet</th>
          <td>
-               {{ receipt.pet.petname }}
+               {% if receipt.pet != null %}
+                 <a href="{{ path('view_pet_by_id', {'id' : receipt.pet.id })}}">
+                     {{ receipt.pet.petname }}
+                     </a>
+            {% endif %}
          </td>
+         
       </tr>
         <tr>
-         <th>Buyer Name</th>
-         <td>{{ receipt.buyername }} </td>
+         <th>Buyer name</th>
+         <td>
+               {% if receipt.buyer != null %}
+                 <a href="{{ path('view_buyer_by_id', {'id' : receipt.buyer.id })}}">
+               {{ receipt.buyer.buyername }}
+               {% endif %}
+               </a>
+         </td>
       </tr>
         <tr>
          <th>Price</th>
@@ -24,6 +35,7 @@
          <th>Date Create</th>
          <td>{{ receipt.datecreate | date('d/m/Y') }}  </td>
       </tr>
+      
       
       
       

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container col-md-6 text-center mt-3">
+    <h1 class="text text-success">Buyer List</h1>
+    <a class="btn btn-primary" href="{{ path('add_buyer')}}">Add</a>
+    
+    
+    <table class="table table-primary mt-3">
+        <thead>
+          <tr>
+            <th>Buyer Id</th>
+            <th>Buyer Name</th>
+            
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+         {% for buyer in buyers %}
+             <tr>
+                <td>
+                    <a href="{{ path('view_buyer_by_id', {'id': buyer.id })}}">
+                        {{ buyer.id }}
+                    </a>
+                 </td>
+                 <td>{{buyer.buyername}}</td>
+                  
+                    
+        
+                 <td>
+                    <a class="btn btn-success" href="{{ path('edit_buyer', {'id': buyer.id })}}">Edit</a>
+                    <a class="btn btn-danger" href="{{ path('delete_buyer', {'id': buyer.id })}}"
+                    onclick="return confirm('Are you sure to delete this buyer ?');"
+                    >
+                        Delete
+                    </a>
+                 </td>
+             </tr>
+         {% endfor %}
+        </tbody>
+    <table>
+    
+</div>
+{% endblock %}

@@ -87,7 +87,7 @@ class Pet
         return $this->petimage;
     }
 
-    public function setPetimage(string $petimage): self
+    public function setPetimage(?string $petimage): self
     {
         $this->petimage = $petimage;
 

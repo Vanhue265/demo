@@ -94,13 +94,13 @@ class Buyer
 
         return $this;
     }
-
+    
     public function removePet(Pet $pet): self
     {
         if ($this->pets->removeElement($pet)) {
             // set the owning side to null (unless already changed)
             if ($pet->getBuyer() === $this) {
-                $pet->setBuyer(null);
+                $pet->setBuyer();
             }
         }
 
@@ -130,7 +130,7 @@ class Buyer
         if ($this->receipts->removeElement($receipt)) {
             // set the owning side to null (unless already changed)
             if ($receipt->getBuyer() === $this) {
-                $receipt->setBuyer(null);
+                $receipt->setBuyer();
             }
         }
 

@@ -10,29 +10,54 @@
          <th colspan=2 class="text text-bg-warning">Pet Detail</th>
       </tr>
       <tr>
-         <th>Pet name</th>
+         <th>Name</th>
          <td>{{ pet.petname }} </td>
       </tr>
         <tr>
-         <th>Pet Gender</th>
+         <th>Gender</th>
          <td>{{ pet.petgender }} </td>
       </tr>
         <tr>
-         <th>Pet Type</th>
+         <th>Type</th>
          <td>{{ pet.pettype }} </td>
       </tr>
       <tr>
          <th>Receipt Id</th>
-         <td>{{ pet.receipt.id }} </td>
+         <td>
+            {% if pet.receipt != null %}
+                 <a href="{{ path('view_receipt_by_id', {'id' : pet.receipt.id })}}">
+                     {{ pet.receipt.id }}
+                  </a>   
+            {% endif %}
+         </td>
+          
       </tr>
       <tr>
-         <th>Buyer name</th>
-         <td>{{ pet.receipt.buyername }} </td>
+         <th>Name of Buyer</th>
+         
+         <td> 
+            {% if pet.buyer != null %}
+                 <a href="{{ path('view_buyer_by_id', {'id' : pet.buyer.id  })}}">
+                     {{ pet.buyer.buyername }}
+                  </a>   
+            {% endif %}
+         </td>
       </tr>
-      {# <tr>
-         <th>Staff name</th>
-         <td>{{ pet.staff.staffname }} </td>
-      </tr> #}
+      <tr>
+         <th>Name of Staff</th>
+         <td>
+               {% if pet.staffs != null %}
+               {% for staff in pet.staffs %}
+                  <a href="{{ path('view_staff_by_id', {'id' : staff.id })}}">
+                     {{ staff.staffname }}
+                     <br>
+                  </a>     
+               {% endfor %}  
+            {% endif %}
+            
+         </td>
+      </tr>
+      
       
    </table>
 </div>

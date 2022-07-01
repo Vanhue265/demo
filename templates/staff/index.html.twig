@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container col-md-6 text-center mt-3">
+		<h1 class="text text-success">Staff List</h1>
+		<a class="btn btn-primary" href="{{ path('add_staff')}}">Add</a>
+
+
+		<table class="table table-primary mt-3">
+			<thead>
+				<tr>
+					<th>Staff Id</th>
+					<th>Staff Name</th>
+					
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for staff in staffs %}
+					<tr>
+						<td>
+						<a href="{{ path('view_staff_by_id', {'id': staff.id })}}">
+						{{ staff.id }}
+						</a>
+						</td>
+						<td>
+                            
+                        {{staff.staffname}}
+                        
+                        </td>
+						
+						<td>
+                <a class="btn btn-warning" href="{{ path('edit_staff', {'id' : staff.id })}}">
+                    Edit
+                </a>
+                <a class="btn btn-danger" href="{{ path('delete_staff', {'id' : staff.id })}}"
+                onclick="return confirm('Are you sure to delete this Product ?')";
+                >
+                    Delete
+                </a>
+            </td>
+					</tr>
+				{% endfor %}
+			</tbody>
+			</table>
+			</div>
+		{% endblock %}

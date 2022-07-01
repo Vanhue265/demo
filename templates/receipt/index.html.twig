@@ -3,11 +3,7 @@
 {% block body %}
 <div class="container col-md-6 text-center mt-3">
     <h1 class="text text-success">Receipt List</h1>
-    {# <a class="btn btn-primary" href="{{ path('add_receipt')}}">Add</a>
-    <form class="form-group" action="{{ path('search_receipt') }}" method="post">
-        <input class="form-control" type="search" name="keyword" required
-        placeholder="Search">
-    </form> #}
+    <a class="btn btn-primary" href="{{ path('add_receipt')}}">Add</a>
     
     <table class="table table-primary mt-3">
         <thead>
@@ -15,7 +11,7 @@
             <th>Receipt Id</th>
             
             <th>Date Create</th>
-            <th><th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +24,14 @@
                  </td>
                  
                  <td>{{ receipt.datecreate | date('d/m/Y') }}  </td>
+                 <td>
+                    <a class="btn btn-success" href="{{ path('edit_receipt', {'id': receipt.id })}}">Edit</a>
+                    <a class="btn btn-danger" href="{{ path('delete_receipt', {'id': receipt.id })}}"
+                    onclick="return confirm('Are you sure to delete this pet ?');"
+                    >
+                        Delete
+                    </a>
+                 </td>
              </tr>
          {% endfor %}
         </tbody>

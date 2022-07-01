@@ -36,7 +36,7 @@ class PetController extends AbstractController
         );
     }
 
-
+    
     #[Route('/delete/{id}', name: 'delete_pet')]
     public function PetDelete(PetRepository $petRepository, $id) {
         $pet = $petRepository->find($id);
@@ -103,4 +103,5 @@ class PetController extends AbstractController
                 'pets' => $pets
             ]);
     }
+    
 }
